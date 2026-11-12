@@ -3,14 +3,13 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Page configuration
+
 st.set_page_config(
     page_title="AI Symptom Checker",
     page_icon="🏥",
     layout="wide"
 )
 
-# Load trained model
 try:
     model = joblib.load("model.pkl")
     features = joblib.load("features.pkl")
@@ -18,7 +17,6 @@ except FileNotFoundError:
     st.error("Model files not found. Run train_model.py first.")
     st.stop()
 
-# Custom styling
 st.markdown("""
 <style>
 .stApp {
@@ -38,7 +36,6 @@ h1, h2, h3, p, label {
 </style>
 """, unsafe_allow_html=True)
 
-# Header
 st.title("🏥 AI-Based Medical Symptom Checker")
 st.write("An educational machine-learning demonstration")
 
@@ -49,7 +46,6 @@ st.info(
 
 st.divider()
 
-# Symptom input
 st.subheader("Select Your Symptoms")
 
 symptoms = {}
@@ -66,7 +62,7 @@ for index, feature in enumerate(features):
 
 st.divider()
 
-# Prediction
+
 if st.button("Analyze Symptoms"):
 
     input_data = pd.DataFrame(
@@ -105,6 +101,6 @@ if st.button("Analyze Symptoms"):
 st.divider()
 
 st.caption(
-    "AI Medical Symptom Checker | Academic Project | "
+    "AI Medical Symptom Checker  "
     "Not intended for clinical use"
 )
